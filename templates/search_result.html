@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>book review search page</title>
+        <link rel="stylesheet" href="{{ url_for('static',filename='style.css')}}">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-dark bg-primary">
+            <a id="navbarHeader" class="navbar-brand" href="{{ url_for('search_page') }}"><img src="{{ url_for('static',filename='index.jpeg')}}" width="30" height="30" class="d-inline-block align-top" alt=""> BookSearch </a>
+            <a class="btn btn-primary" href="{{ url_for('logout') }}"> Logout </a>
+        </nav>
+
+        <body>
+            <div class="container">
+                <div class="card text-center" style="margin: 50px auto 50px auto;">
+                    <div class="card-header">Results</div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                        <tr>
+                            <th>#</th>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>ISBN</th>
+                        </tr>
+                        {% for book in books %}
+                        <tr>
+                            <td> {{ loop.index }} </td>
+                            <td> <a href="{{ url_for('book_info', isbn=book.isbn) }}"> {{ book.title }}</a></td>
+                            <td> {{ book.author }} </td>
+                            <td> {{ book.isbn }} </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <title>Sign in</title>
+</head>
+<nav class="navbar navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">
+    <img src="{{ url_for('static',filename='index.jpeg') }}" width="30" height="30" class="d-inline-block align-top" alt="">
+       Bookreview
+    </a>
+    <a class="btn btn-success" href="{{ url_for('login') }}"> Sign in </a>
+</nav>
+
+<body>
+  <div class="main">
+    <p class="sign"  align="center">Register</p>
+    {% if msg  %}
+    <div id="login-eror">
+      <p align="center">
+        {{ msg }}
+
+      </p>
+    </div>
+    {% endif %}
+     <form class="form1" action="{{url_for('register') }}" method="POST">
+         <input class="un" name="username" type="text" align="center" placeholder="username">
+         <input class="pass" name="password" type="password" align="center" placeholder="password">
+         <button class="submit" align="center">Register</button>
+            
+                
+  </div>
+     </form>
+     
+</body>
+
+</html>
+
